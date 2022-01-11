@@ -1,0 +1,16 @@
+import logo from "./spiderman.png";
+import { useLocation } from "wouter";
+import "./styles.css";
+
+export default function Icono() {
+  const [path, pushLocation] = useLocation();
+
+  const handleIcon = (evt) => {
+    //evitar que refresque la pagina
+    evt.preventDefault();
+    // cambiar la ruta del navegador
+    pushLocation("/");
+  };
+
+  return <img alt='' id="Icono" src={logo} onClick={handleIcon} />;
+}
