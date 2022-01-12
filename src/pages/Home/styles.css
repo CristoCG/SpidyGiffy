@@ -13,6 +13,7 @@ button {
   display: inline-block;
   font-size: 30px;
   font-family: 'Bebas Neue', cursive;
+  cursor: pointer;
 }
 
 input {
