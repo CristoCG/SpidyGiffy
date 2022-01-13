@@ -18,14 +18,14 @@ export default function App() {
 
     <div className="App">
       <section className="App-content">
-
-        <figure className="App-logo">
-          <Icon></Icon>
-        </figure>
+        <Icon></Icon>
         <GifsContextProvider>
           <Route 
           component={Detail} 
           path="/gif/:id" />
+          <Route 
+          component={ListOfGifs} 
+          path="/gif/:keyword" /> 
           <Route 
           component={Home} 
           path="/" />
