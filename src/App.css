@@ -18,6 +18,10 @@
 .App-link {
   color: #61dafb;
 }
+.App-title {
+  color: white;
+}
+
 
 @keyframes App-logo-spin {
   from {
@@ -27,3 +31,32 @@
     transform: rotate(360deg);
   }
 }
+
+.App-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.App-results {
+  flex-shrink: 2;
+}
+
+.App-category {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+@media screen and (min-width: 640px){
+  .App-main{
+    flex-direction: initial;
+  }
+
+  .App-category{
+    padding: 0 2em;
+    position: sticky;
+    top: 0;
+    width: 40%;
+  }
+}
+

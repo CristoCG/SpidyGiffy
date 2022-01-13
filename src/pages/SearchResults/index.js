@@ -1,17 +1,30 @@
-import React, { useEffect,useState } from "react";
-import ListOfGifs from "../../components/ListOfGifs";
-import Spinner from '../../components/Spinner'
-import {useGifs} from '../../components/hooks/useGifs'
+import React from "react";
+import ListOfGifs from "components/ListOfGifs";
+import Spinner from 'components/Spinner'
+import {useGifs} from 'components/hooks/useGifs'
+import './search.css'
 
-function SearchResults({ params }) {
+
+export default function SearchResults({ params }) {
   const { keyword } = params;
-  const {loading, gifs} = useGifs({keyword})
+  const {loading, gifs, setPage} = useGifs({keyword})
+
+  const handleNextPage = () => setPage(prevPage=> prevPage + 1)
+
+  const handlePreviousPage = () => setPage(prevPage=> prevPage - 1)
+
   return <>
     {loading
       ? <Spinner/>
-      :<ListOfGifs gifs={gifs}/>
-       }
+      :<>
+        <h3 className="App-title"><em>Buscaste: {decodeURI(keyword).toLocaleUpperCase()}</em></h3>
+        <ListOfGifs gifs={gifs}/>
+      </>
+    }
+    <i>
+      <button id='previous-page' onClick={handlePreviousPage}>Previous page</button> 
+      <button id='next-page' onClick={handleNextPage}>Next page</button>
+    </i>
   </>
 }
 
-export default React.memo(SearchResults)

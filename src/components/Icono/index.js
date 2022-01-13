@@ -12,5 +12,8 @@ export default function Icono() {
     pushLocation("/");
   };
 
-  return <img alt="Giffy logo" id="Icono" src={logo} onClick={handleIcon} />;
+  return <>
+  <img alt="Giffy logo" id="Icono" src={logo} onClick={handleIcon} />
+  <h3 className="Icon-title">Spidy Giffy</h3>
+  </>
 }

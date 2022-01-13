@@ -1,0 +1,33 @@
+#next-page {
+    background-color: rgb(252, 40, 40);
+    border-radius: 10px;
+    border: 2px solid black;
+    color: black;
+    padding: 14px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    font-family: 'Bebas Neue', cursive;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  #previous-page {
+    background-color: rgb(79, 40, 252);
+    border-radius: 10px;
+    border: 2px solid black;
+    color: white;
+    padding: 14px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    font-family: 'Bebas Neue', cursive;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+i{
+      display: inline-flex;
+      margin-top: 15px;
+  }

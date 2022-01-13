@@ -1,7 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=The+Nautigal&display=swap');
+
 #Icono {
-    width: 100px;
+  
     align-items:center;
-    margin: 50px ;
     position:static;
     cursor: pointer;
+    object-fit: cover;
+    width: 100px;
+}
+
+.Icon-title{
+    font-family: 'The Nautigal', cursive;
+    font-size: 80px;
+    margin-top: 0;
+    margin-bottom: 0;
+    letter-spacing: 10px;
+
 }
