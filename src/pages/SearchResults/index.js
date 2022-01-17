@@ -1,30 +1,46 @@
-import React from "react";
+import React, { useRef, useCallback, useEffect } from "react";
 import ListOfGifs from "components/ListOfGifs";
-import Spinner from 'components/Spinner'
-import {useGifs} from 'components/hooks/useGifs'
-import './search.css'
-
+import Spinner from "components/Spinner";
+import { useGifs } from "hooks/useGifs";
+import "./search.css";
+import useNearScreen from "hooks/useNearScreen";
+import debounce from "just-debounce-it";
 
 export default function SearchResults({ params }) {
   const { keyword } = params;
-  const {loading, gifs, setPage} = useGifs({keyword})
+  const { loading, gifs, setPage } = useGifs({ keyword });
+  const externalRef = useRef();
 
-  const handleNextPage = () => setPage(prevPage=> prevPage + 1)
+  const { isNearScreen } = useNearScreen({
+    externalRef: loading ? null : externalRef,
+    once: false,
+  });
 
-  const handlePreviousPage = () => setPage(prevPage=> prevPage - 1)
+  const debounceHandleNextPage = useCallback(
+    debounce(() => setPage((prevPage) => prevPage + 1), 1000)
+    ,[setPage]
+  );
 
-  return <>
-    {loading
-      ? <Spinner/>
-      :<>
-        <h3 className="App-title"><em>Buscaste: {decodeURI(keyword).toLocaleUpperCase()}</em></h3>
-        <ListOfGifs gifs={gifs}/>
-      </>
-    }
-    <i>
-      <button id='previous-page' onClick={handlePreviousPage}>Previous page</button> 
-      <button id='next-page' onClick={handleNextPage}>Next page</button>
-    </i>
-  </>
+  useEffect(
+    function () {
+      if (isNearScreen) debounceHandleNextPage();
+    },
+    [debounceHandleNextPage, isNearScreen]
+  );
+
+  return (
+    <>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <h3 className="App-title">
+            <em>Buscaste: {decodeURI(keyword).toLocaleUpperCase()}</em>
+          </h3>
+          <ListOfGifs gifs={gifs} />
+          <div id="visor" ref={externalRef}></div>
+        </>
+      )}
+    </>
+  );
 }
-

@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 
 import Gif from "../../components/Gif";
-import useGlbalGifs from "../../components/hooks/useGlobalGifs";
+import useGlbalGifs from "../../hooks/useGlobalGifs";
 
 export default function Detail ({ params }){
 

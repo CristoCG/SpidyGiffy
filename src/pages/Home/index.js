@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { useGifs } from "components/hooks/useGifs";
+import { useGifs } from "hooks/useGifs";
 import ListOfGifs from "components/ListOfGifs";
 import TrendingSearches from "components/TrendingSearches";
 import "./styles.css";
@@ -32,7 +32,7 @@ export default function Home() {
         />
         <button id="search" type="submit">Search</button>
       </form>
-      <h3 className="App-title"> Última busqueda</h3>
+      <h3 className="App-title"> Latest search</h3>
       <ListOfGifs gifs={gifs} />
           <TrendingSearches/>
 
