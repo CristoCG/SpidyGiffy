@@ -40,7 +40,7 @@ export function useGifs({keyword} ={keyword:null}) {
       setLoadingNextPage(false)
 
     })
-  },[page,keywordToUse])
+  },[page,keywordToUse,setGifs])
 
   return{loading,loadingNextPage, gifs,setPage}
 }

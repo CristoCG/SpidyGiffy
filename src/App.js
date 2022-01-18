@@ -26,7 +26,7 @@ export default function App() {
             <GifsContextProvider>
               <Route component={Detail} path="/gif/:id" />
               <Route component={ListOfGifs} path="/gif/:keyword" />
-              <Route component={Home} path="/" />
+              <Route component={HomePage} path="/" />
               <Route component={SearchResults} path="/search/:keyword" />
             </GifsContextProvider>
           </section>
