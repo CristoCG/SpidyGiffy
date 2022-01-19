@@ -5,6 +5,7 @@ import ListOfGifs from "components/ListOfGifs";
 import TrendingSearches from "components/TrendingSearches";
 import "./styles.css";
 import SearchForm from "components/SearchForm";
+import { Helmet } from "react-helmet";
 
 export default function Home() {
   const [path, pushLocation] = useLocation();
@@ -20,6 +21,9 @@ export default function Home() {
 
   return (
     <>
+    <Helmet>
+      <title>Home | Spidy</title>
+    </Helmet>
       <SearchForm onSubmit={handleSubmit} />
       <h3 className="App-title"> Latest search</h3>
       <ListOfGifs gifs={gifs} />

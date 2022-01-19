@@ -5,6 +5,8 @@ import { useGifs } from "hooks/useGifs";
 import "./search.css";
 import useNearScreen from "hooks/useNearScreen";
 import debounce from "just-debounce-it";
+import useSEO from "hooks/useSEO";
+import { Helmet } from "react-helmet";
 
 export default function SearchResults({ params }) {
   const { keyword } = params;
@@ -16,10 +18,12 @@ export default function SearchResults({ params }) {
     once: false,
   });
 
+  const title = gifs 
+  ? `${gifs.length} results of: ${decodeURI(keyword)}` :''
+
   const debounceHandleNextPage = useCallback(
     debounce(() => setPage((prevPage) => prevPage + 1), 1000)
-    ,[setPage]
-  );
+    ,[setPage]);
 
   useEffect(
     function () {
@@ -34,6 +38,10 @@ export default function SearchResults({ params }) {
         <Spinner />
       ) : (
         <>
+        <Helmet>
+          <title>{title} | Spidy</title>
+          <meta name = "description" content = {title}/>
+          </Helmet>
           <h3 className="App-title">
             <em>Buscaste: {decodeURI(keyword).toLocaleUpperCase()}</em>
           </h3>
