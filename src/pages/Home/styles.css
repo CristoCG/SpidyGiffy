@@ -14,11 +14,10 @@
   font-size: 30px;
   font-family: 'Bebas Neue', cursive;
   cursor: pointer;
-  display: inline-flex;
 
 }
 #btns {
-  display: inline-flex;
+  margin: 5%;
 
 }
 

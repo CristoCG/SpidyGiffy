@@ -81,9 +81,6 @@ function SearchForm({
         value={keyword}
       />
       <div id="btns">
-        <button id="search" type="submit">
-          Search
-        </button>
         <select value={rating} onChange={handleChangeRating}>
           <option disabled>Rating type</option>
           {RATINGS.map((rating) => (
@@ -96,6 +93,9 @@ function SearchForm({
             <option key={lang}>{lang}</option>
           ))}
         </select>
+        <button id="search" type="submit">
+          Search
+        </button>
       </div>
     </form>
   );
