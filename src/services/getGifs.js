@@ -17,10 +17,12 @@ export default function getGifs({
   limit = 5,
   keyword = "morty",
   page = 0,
+  rating,
+  lang
 } = {}) {
   const apiURL = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${
     page * limit
-  }&rating=G&lang=en`;
+  }&rating=${rating}&lang=${lang}`;
 
   return fetch(apiURL)
     .then((res) => res.json())

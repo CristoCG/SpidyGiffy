@@ -14,7 +14,14 @@
   font-size: 30px;
   font-family: 'Bebas Neue', cursive;
   cursor: pointer;
+  display: inline-flex;
+
 }
+#btns {
+  display: inline-flex;
+
+}
+
 input {
   border-radius: 10px;
   background-color: rgb(30, 34, 255);

@@ -4,6 +4,7 @@ import React from "react";
 import { Redirect } from "wouter";
 import Gif from "../../components/Gif";
 import { Helmet } from "react-helmet";
+import SearchForm from "components/SearchForm";
 
 export default function Detail({ params }) {
   const { gif, isLoading, isError } = useSingleGif({ id: params.id });
@@ -28,6 +29,7 @@ export default function Detail({ params }) {
     <Helmet>
       <title>{title} || Spidy</title>
     </Helmet>
+    <SearchForm/>
       <h3 className="App-title">
         <em>Gif:</em> {gif.title}
       </h3>

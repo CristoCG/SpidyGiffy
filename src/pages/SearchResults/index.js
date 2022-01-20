@@ -5,12 +5,12 @@ import { useGifs } from "hooks/useGifs";
 import "./search.css";
 import useNearScreen from "hooks/useNearScreen";
 import debounce from "just-debounce-it";
-import useSEO from "hooks/useSEO";
-import { Helmet } from "react-helmet";
+import { Helmet ,HelmetProvider} from "react-helmet-async";
+import SearchForm from "components/SearchForm";
 
 export default function SearchResults({ params }) {
-  const { keyword } = params;
-  const { loading, gifs, setPage } = useGifs({ keyword });
+  const { keyword, rating = 'g', lang = 'en' } = params;
+  const { loading, gifs, setPage } = useGifs({ keyword, rating, lang });
   const externalRef = useRef();
 
   const { isNearScreen } = useNearScreen({
@@ -30,7 +30,10 @@ export default function SearchResults({ params }) {
       if (isNearScreen) debounceHandleNextPage();
     },
     [debounceHandleNextPage, isNearScreen]
+
+    
   );
+  
 
   return (
     <>
@@ -38,12 +41,15 @@ export default function SearchResults({ params }) {
         <Spinner />
       ) : (
         <>
+        <HelmetProvider>
         <Helmet>
           <title>{title} | Spidy</title>
           <meta name = "description" content = {title}/>
           </Helmet>
+        </HelmetProvider>
+        <SearchForm initialKeyword={keyword} initialRating={rating}  initialLang={lang}/>
           <h3 className="App-title">
-            <em>Buscaste: {decodeURI(keyword).toLocaleUpperCase()}</em>
+            <em>Search: {decodeURI(keyword).toLocaleUpperCase()}</em>
           </h3>
           <ListOfGifs gifs={gifs} />
           <div id="visor" ref={externalRef}></div>

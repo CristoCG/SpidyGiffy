@@ -1,3 +1,9 @@
+import SearchForm from "components/SearchForm";
+import React from "react";
+
 export default function Error_404(){
-    return <h1><em>ERROR 404 :(</em></h1>
+    return <>
+    <SearchForm/>
+    <h1><em>ERROR 404 :(</em></h1>
+    </>
 }

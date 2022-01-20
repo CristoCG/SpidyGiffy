@@ -1,4 +1,4 @@
-import React ,{Suspense} from "react";
+import React, { Suspense } from "react";
 import "./App.css";
 import ListOfGifs from "./components/ListOfGifs";
 import { Link, Route } from "wouter";
@@ -28,7 +28,11 @@ export default function App() {
               <Route component={Detail} path="/gif/:id" />
               <Route component={ListOfGifs} path="/gif/:keyword" />
               <Route component={HomePage} path="/" />
-              <Route component={SearchResults} path="/search/:keyword" />
+              <Route component={HomePage} path="/search/" />
+              <Route
+                component={SearchResults}
+                path="/search/:keyword/:rating?/:lang?"
+              />
               <Route component={Error_404} path="/404" />
             </GifsContextProvider>
           </section>

@@ -8,10 +8,11 @@ export default function useSingleGif ({id}){
     const [gif,setGif] = useState(gifFromCache)
     const [isLoading, setIsLoading] = useState(false)
     const [isError, setIsError] =useState(false)
-    useEffect(function (){
-        setIsLoading(true)
+    
+    useEffect(function (){ 
         if(!gif){
-            //llamar al servicio si Gif no existe
+            setIsLoading(true)
+            //llamar al servicio si Gif existe
             getSingleGif({id})
             .then(gif => {
                 setGif(gif)
